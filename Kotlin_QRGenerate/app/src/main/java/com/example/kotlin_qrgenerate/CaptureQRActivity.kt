@@ -25,14 +25,18 @@ class CaptureQRActivity : AppCompatActivity() {
     //resultActivity Listener for Scan Barcode ( QR )
 
 
-
+    //일반 스캐너
     var options: ScanOptions = ScanOptions()
+    //custom scanner
+    var customOptions: ScanOptions = ScanOptions()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         //setting for scan
         setQROptions(options)
+        //setting for custom scan options
+        setCustomQROptions(customOptions)
 
         val barcodeLauncherOri = registerForActivityResult(ScanContract()) { result: ScanIntentResult ->
 
@@ -101,16 +105,20 @@ class CaptureQRActivity : AppCompatActivity() {
             if (!isFinishing) finish()
         }
 
+        //일반 QR scanner를 호출하는 버튼 listener
         binding.btnScan.setOnClickListener {
-
            barcodeLauncherOri.launch(options)
            //barcodeLauncherOri.launch(ScanOptions())
         }
+        //custom scanner를 호출하는 버튼 listener
+        binding.btnCustom.setOnClickListener {
+
+            barcodeLauncherOri.launch(customOptions)
+        }
+
 
 
     }
-
-    
 
 
     //settings for QR Scan option
@@ -122,6 +130,18 @@ class CaptureQRActivity : AppCompatActivity() {
         //QR을 detect한 시점의 이미지 불러오기 가능
         options.setBarcodeImageEnabled(true)
     }
+
+    //settings for QR Scan option
+    private fun setCustomQROptions(options: ScanOptions){
+        options.setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+        options.setPrompt("QR Code Scan.... by concokorea")
+        options.setCameraId(0)
+        options.setBeepEnabled(true)
+        //QR을 detect한 시점의 이미지 불러오기 가능
+        options.setBarcodeImageEnabled(true)
+        options.captureActivity = MyBarcodeReaderActivity::class.java
+    }
+
 
 
 }

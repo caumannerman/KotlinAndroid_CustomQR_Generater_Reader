@@ -11,6 +11,8 @@
         <entry key="..\:/Users/Desktop/Kotlin_QRGenerate/app/src/main/res/layout/activity_scanner.xml" value="0.2713541666666667" />
         <entry key="..\:/Users/Desktop/Yang/KotlinAndroid_CustomQR_Generater_Reader/Kotlin_QRGenerate/app/src/main/res/layout/activity_capture_qractivity.xml" value="0.3458333333333333" />
         <entry key="..\:/Users/Desktop/Yang/KotlinAndroid_CustomQR_Generater_Reader/Kotlin_QRGenerate/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Desktop/Yang/KotlinAndroid_CustomQR_Generater_Reader/Kotlin_QRGenerate/app/src/main/res/layout/activity_my_barcode_reader.xml" value="0.3458333333333333" />
+        <entry key="..\:/Users/Desktop/Yang/KotlinAndroid_CustomQR_Generater_Reader/Kotlin_QRGenerate/app/src/main/res/layout/custom_barcode_scanner.xml" value="0.3458333333333333" />
       </map>
     </option>
   </component>
