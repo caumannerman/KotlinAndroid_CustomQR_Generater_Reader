@@ -1,0 +1,1 @@
+# KotlinAndroid_CustomQR_Generater_Reader
