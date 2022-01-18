@@ -2,6 +2,7 @@ package com.example.kotlin_qrgenerate
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +36,7 @@ class CaptureQRActivity : AppCompatActivity() {
 
         val barcodeLauncherOri = registerForActivityResult(ScanContract()) { result: ScanIntentResult ->
 
+            //QR code Contents(내용) ...
             if (result.contents == null) {
                 Toast.makeText(this@CaptureQRActivity, "Cancelled", Toast.LENGTH_LONG).show()
                 binding.tvTest.text = "null"
@@ -42,6 +44,13 @@ class CaptureQRActivity : AppCompatActivity() {
                 Toast.makeText(this@CaptureQRActivity, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
                 binding.tvTest.text = "${result.contents}"
             }
+            //QR 코드를 찍은 순간의 사진
+            if(result.barcodeImagePath != null) {
+                val bitmap = BitmapFactory.decodeFile(result.barcodeImagePath)
+                //image View에 찍어온 사진 저장
+                binding.ivQrcode.setImageBitmap(bitmap)
+            }
+
         }
 
 
@@ -110,6 +119,7 @@ class CaptureQRActivity : AppCompatActivity() {
         options.setPrompt("QR Code Scan.... by concokorea")
         options.setCameraId(0)
         options.setBeepEnabled(true)
+        //QR을 detect한 시점의 이미지 불러오기 가능
         options.setBarcodeImageEnabled(true)
     }
 
